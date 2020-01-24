@@ -18,3 +18,7 @@ mat-card {
 mat-card-header {
   justify-content: center;
 }
+
+img {
+  width: 70%;
+}
