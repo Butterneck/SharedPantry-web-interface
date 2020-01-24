@@ -1,0 +1,20 @@
+.grid-container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: stretch;
+}
+
+.dashboard-card-content {
+  text-align: center;
+}
+
+mat-card {
+  margin: 2% 5% 2% 5%;
+  background-color: lightyellow;
+}
+
+mat-card-header {
+  justify-content: center;
+}
