@@ -1,5 +1,5 @@
 <div class="container">
-  <mat-accordion *ngFor="let user of users_list">
+  <mat-accordion *ngFor="let user of users_list; let i = index">
     <mat-expansion-panel>
       <mat-expansion-panel-header>
 
@@ -17,25 +17,24 @@
       </mat-expansion-panel-header>
 
 
-      <mat-form-field>
-        <input matInput placeholder="Username">
-      </mat-form-field>
-
-      &nbsp;
-
-      <mat-form-field>
-        <input matInput placeholder="Chat id">
-      </mat-form-field>
-
-      &nbsp;
-
-      <mat-form-field>
-        <input matInput placeholder="Admin">
-      </mat-form-field>
-
-      &nbsp;
-
-      <button mat-flat-button color="accent" (click)="openSnackBar('Saved!', 'Gotcha')">Save</button>
+      <form [formGroup]="userForms[i]" (ngSubmit)="onSubmit(i)">
+        <mat-form-field>
+          <input matInput placeholder="Username" formControlName="username">
+        </mat-form-field>
+        &nbsp;
+        <mat-form-field>
+          <input matInput placeholder="Chat id" formControlName="chat_id">
+        </mat-form-field>
+        &nbsp;
+        Is admin:
+        <mat-slide-toggle
+          class="example-margin"
+          [checked]="userForms[i].value.is_admin"
+          formControlName="is_admin">
+        </mat-slide-toggle>
+        &nbsp;
+        <button mat-flat-button color="accent" type="submit">Save</button>
+      </form>
 
     </mat-expansion-panel>
   </mat-accordion>

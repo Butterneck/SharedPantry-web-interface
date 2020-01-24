@@ -26,9 +26,9 @@ export class ProductsComponent implements OnInit {
     for (let product of product_list) {
       forms.push(
         new FormGroup({
-          name: new FormControl(''),
-          quantity: new FormControl(''),
-          price: new FormControl('')
+          name: new FormControl(product.name),
+          quantity: new FormControl(product.quantity),
+          price: new FormControl(product.price)
         })
       )
     }
@@ -43,7 +43,6 @@ export class ProductsComponent implements OnInit {
     ).subscribe(resp => {
       this.products_list = resp.products;
       this.build_forms(this.products_list, this.productForms);
-      console.log(this.productForms)
     });
   }
 
@@ -54,9 +53,9 @@ export class ProductsComponent implements OnInit {
   }
 
   onSubmit(index: number) {
-    console.log(this.productForms[index].value.name)
-    console.log(this.productForms[index].value.quantity)
-    console.log(this.productForms[index].value.price)
+    console.log(this.productForms[index].value.name);
+    console.log(this.productForms[index].value.quantity);
+    console.log(this.productForms[index].value.price);
   }
 
 }
