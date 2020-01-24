@@ -1,0 +1,42 @@
+<div class="container">
+  <mat-accordion *ngFor="let item of itemslist">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+
+        <mat-panel-title>
+          {{ item.name }}
+        </mat-panel-title>
+
+        <mat-panel-description>
+          Qt.{{ item.quantity }}
+        </mat-panel-description>
+
+        <mat-panel-description>
+          ${{ item.price }}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+
+      <mat-form-field>
+        <input matInput placeholder="Nome prodotto">
+      </mat-form-field>
+
+      &nbsp;
+
+      <mat-form-field>
+        <input matInput placeholder="Prezzo">
+      </mat-form-field>
+
+      &nbsp;
+
+      <mat-form-field>
+        <input matInput placeholder="Quantita">
+      </mat-form-field>
+
+      &nbsp;
+
+      <button mat-button (click)="openSnackBar('Saved!', 'Gotcha')">Save</button>
+
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
