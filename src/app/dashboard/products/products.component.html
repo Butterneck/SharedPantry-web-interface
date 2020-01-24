@@ -1,41 +1,36 @@
 <div class="container">
-  <mat-accordion *ngFor="let item of items_list">
+  <mat-accordion *ngFor="let product of products_list; let i = index">
     <mat-expansion-panel>
       <mat-expansion-panel-header>
 
         <mat-panel-title>
-          {{ item.name }}
+          {{ product.name }}
         </mat-panel-title>
 
         <mat-panel-description>
-          Qt.{{ item.quantity }}
+          Qt.{{ product.quantity }}
         </mat-panel-description>
 
         <mat-panel-description>
-          ${{ item.price }}
+          ${{ product.price }}
         </mat-panel-description>
       </mat-expansion-panel-header>
 
-
-      <mat-form-field>
-        <input matInput placeholder="Product Name">
-      </mat-form-field>
-
-      &nbsp;
-
-      <mat-form-field>
-        <input matInput placeholder="Quantity">
-      </mat-form-field>
-
-      &nbsp;
-
-      <mat-form-field>
-        <input matInput placeholder="Price">
-      </mat-form-field>
-
-      &nbsp;
-
-      <button mat-flat-button color="accent" (click)="openSnackBar('Saved!', 'Gotcha')">Save</button>
+      <form [formGroup]="productForms[i]">
+        <mat-form-field>
+          <input matInput placeholder="Product Name" formControlName="name">
+        </mat-form-field>
+        &nbsp;
+        <mat-form-field>
+          <input matInput placeholder="Quantity">
+        </mat-form-field>
+        &nbsp;
+        <mat-form-field>
+          <input matInput placeholder="Price">
+        </mat-form-field>
+        &nbsp;
+        <button mat-flat-button color="accent" type="submit">Save</button>
+      </form>
 
     </mat-expansion-panel>
   </mat-accordion>

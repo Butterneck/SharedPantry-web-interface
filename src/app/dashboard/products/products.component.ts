@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {Product} from "./Product";
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-products',
@@ -10,21 +12,38 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class ProductsComponent implements OnInit {
   private token: string;
-  private items_list: any[];
+  private products_list: Product[];
+  private productForms: FormGroup[] = [];
 
   constructor(private activatedRoute: ActivatedRoute,
               private http: HttpClient,
               private snackBar: MatSnackBar) {
-    this.token = activatedRoute.snapshot.url[1].path
+    this.token = activatedRoute.snapshot.url[1].path;
   }
 
+
+  build_forms(product_list: Product[], forms: FormGroup[]) {
+    for (let product of product_list) {
+      forms.push(
+        new FormGroup({
+          name: new FormControl(''),
+          quantity: new FormControl(''),
+          price: new FormControl('')
+        })
+      )
+    }
+  }
+
+
   ngOnInit() {
-    this.http.post<any>(
+    this.http.post<{products: Product[]}>(
       'http://localhost:5000/getAllProducts',
       {},
       {headers: {token: this.token}}
-    ).subscribe(items => {
-      this.items_list = items.products;
+    ).subscribe(resp => {
+      this.products_list = resp.products;
+      this.build_forms(this.products_list, this.productForms);
+      console.log(this.productForms)
     });
   }
 

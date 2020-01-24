@@ -19,13 +19,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProductsComponent } from './dashboard/products/products.component';
 import { UsersComponent } from './dashboard/users/users.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     ProductsComponent,
-    UsersComponent
+    UsersComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +42,7 @@ import { UsersComponent } from './dashboard/users/users.component';
     LayoutModule,
     MatToolbarModule,
     MatIconModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
