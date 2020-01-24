@@ -18,25 +18,26 @@
 
 
       <mat-form-field>
-        <input matInput placeholder="Nome prodotto">
+        <input matInput placeholder="Product Name">
       </mat-form-field>
 
       &nbsp;
 
       <mat-form-field>
-        <input matInput placeholder="Prezzo">
+        <input matInput placeholder="Quantity">
       </mat-form-field>
 
       &nbsp;
 
       <mat-form-field>
-        <input matInput placeholder="Quantita">
+        <input matInput placeholder="Price">
       </mat-form-field>
 
       &nbsp;
 
-      <button mat-button (click)="openSnackBar('Saved!', 'Gotcha')">Save</button>
+      <button mat-flat-button color="accent" (click)="openSnackBar('Saved!', 'Gotcha')">Save</button>
 
     </mat-expansion-panel>
   </mat-accordion>
+  <button mat-flat-button color="accent">Add Product</button>
 </div>
