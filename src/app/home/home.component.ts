@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.http.post<any>(
-      'http://url/getAllProducts',
+      'http://localhost:5000/getAllProducts',
       {},
       {headers: {token: this.token}}
     ).subscribe(items => {
