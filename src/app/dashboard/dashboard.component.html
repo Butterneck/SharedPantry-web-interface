@@ -1,5 +1,5 @@
 <div class="grid-container">
-  <mat-card class="dashboard-card" *ngFor="let card of cards">
+  <mat-card class="dashboard-card" *ngFor="let card of cards" [routerLink]="card.path">
     <mat-card-header>
       <mat-card-title>
         {{ card.title }}

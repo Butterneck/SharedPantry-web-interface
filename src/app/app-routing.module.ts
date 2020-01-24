@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {HomeComponent} from "./home/home.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
+import {ProductsComponent} from "./dashboard/products/products.component";
 
 
 const routes: Routes = [
-  { path: '', component: DashboardComponent }
+  { path: ':token', redirectTo: '/dashboard/:token', pathMatch: 'full' },
+  { path: 'dashboard/:token', component: DashboardComponent },
+  { path: 'products/:token', component: ProductsComponent }
 ];
 
 @NgModule({

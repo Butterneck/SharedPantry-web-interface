@@ -15,7 +15,7 @@ export class ProductsComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute,
               private http: HttpClient,
               private snackBar: MatSnackBar) {
-    this.token = activatedRoute.snapshot.queryParams.token;
+    this.token = activatedRoute.snapshot.url[1].path
   }
 
   ngOnInit() {
