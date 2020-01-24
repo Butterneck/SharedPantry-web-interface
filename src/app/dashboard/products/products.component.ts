@@ -53,4 +53,10 @@ export class ProductsComponent implements OnInit {
     });
   }
 
+  onSubmit(index: number) {
+    console.log(this.productForms[index].value.name)
+    console.log(this.productForms[index].value.quantity)
+    console.log(this.productForms[index].value.price)
+  }
+
 }

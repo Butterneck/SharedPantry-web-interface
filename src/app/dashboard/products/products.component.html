@@ -16,17 +16,17 @@
         </mat-panel-description>
       </mat-expansion-panel-header>
 
-      <form [formGroup]="productForms[i]">
+      <form [formGroup]="productForms[i]" (ngSubmit)="onSubmit(i)">
         <mat-form-field>
           <input matInput placeholder="Product Name" formControlName="name">
         </mat-form-field>
         &nbsp;
         <mat-form-field>
-          <input matInput placeholder="Quantity">
+          <input matInput placeholder="Quantity" formControlName="quantity">
         </mat-form-field>
         &nbsp;
         <mat-form-field>
-          <input matInput placeholder="Price">
+          <input matInput placeholder="Price" formControlName="price">
         </mat-form-field>
         &nbsp;
         <button mat-flat-button color="accent" type="submit">Save</button>
