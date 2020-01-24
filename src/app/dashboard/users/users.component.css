@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+mat-accordion {
+  padding: 2%;
+}
+
+button {
+  width: 97%;
+  padding: 2%;
+}
+
+mat-form-field{
+  width: 100%;
+}

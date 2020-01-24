@@ -1,0 +1,42 @@
+<div class="container">
+  <mat-accordion *ngFor="let user of users_list">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+
+        <mat-panel-title>
+          {{ user.username }}
+        </mat-panel-title>
+
+        <mat-panel-description>
+          Chat id.{{ user.chat_id }}
+        </mat-panel-description>
+
+        <mat-panel-description>
+          Admin: {{ user.is_admin }}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+
+      <mat-form-field>
+        <input matInput placeholder="Username">
+      </mat-form-field>
+
+      &nbsp;
+
+      <mat-form-field>
+        <input matInput placeholder="Chat id">
+      </mat-form-field>
+
+      &nbsp;
+
+      <mat-form-field>
+        <input matInput placeholder="Admin">
+      </mat-form-field>
+
+      &nbsp;
+
+      <button mat-flat-button color="accent" (click)="openSnackBar('Saved!', 'Gotcha')">Save</button>
+
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
