@@ -4,6 +4,7 @@ import {HttpClient} from "@angular/common/http";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {FormControl, FormGroup} from "@angular/forms";
 import {User} from "./User";
+import {combineLatest} from "rxjs";
 
 @Component({
   selector: 'app-users',
@@ -43,7 +44,6 @@ export class UsersComponent implements OnInit {
     ).subscribe(users => {
       this.users_list = users.users;
       this.build_forms(this.users_list, this.userForms);
-      console.log(this.userForms)
     });
   }
 
@@ -54,8 +54,29 @@ export class UsersComponent implements OnInit {
   }
 
   onSubmit(index: number) {
-    console.log(this.userForms[index].value.username);
-    console.log(this.userForms[index].value.chat_id);
-    console.log(this.userForms[index].value.is_admin);
+    const username = this.http.post<{user: User}>(
+      'http://localhost:5000/editUserName',
+      {
+        chat_id: this.users_list[index].chat_id,
+        username: this.userForms[index].value.username
+      },
+      {headers: {token: this.token}}
+    );
+
+    const isAdmin = this.http.post<{user: User}>(
+      'http://localhost:5000/editUserAdmin',
+      {
+        chat_id: this.users_list[index].chat_id
+      },
+      {headers: {token: this.token}}
+    );
+
+    combineLatest(
+      username,
+      isAdmin
+    ).subscribe(([nameRes, adminRes]) => {
+      this.users_list[index].username = nameRes.user.username;
+      this.users_list[index].is_admin = adminRes.user.is_admin;
+    })
   }
 }
