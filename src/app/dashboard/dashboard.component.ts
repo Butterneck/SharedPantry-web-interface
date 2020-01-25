@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute} from "@angular/router";
+import {map, shareReplay} from "rxjs/operators";
+import {Observable} from "rxjs";
+import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
 
 @Component({
   selector: 'app-dashboard',
@@ -12,7 +15,8 @@ export class DashboardComponent {
   cards: any[];
 
   constructor(private activatedRoute: ActivatedRoute,
-              private http: HttpClient,) {
+              private http: HttpClient,
+              private breakpointObserver: BreakpointObserver) {
     this.token = activatedRoute.snapshot.url[1].path;
     this.cards = [
       {
@@ -32,4 +36,11 @@ export class DashboardComponent {
       }
     ];
   }
+
+
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+    .pipe(
+      map(result => result.matches),
+      shareReplay()
+    );
 }

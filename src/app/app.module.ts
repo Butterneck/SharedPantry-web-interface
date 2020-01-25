@@ -21,6 +21,8 @@ import { ProductsComponent } from './dashboard/products/products.component';
 import { UsersComponent } from './dashboard/users/users.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatListModule} from "@angular/material/list";
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
     MatToolbarModule,
     MatIconModule,
     ReactiveFormsModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatSidenavModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
