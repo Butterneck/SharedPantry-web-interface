@@ -4,6 +4,7 @@ import {HttpClient} from "@angular/common/http";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Product} from "./Product";
 import {FormControl, FormGroup} from "@angular/forms";
+import {combineLatest, Observable} from "rxjs";
 
 @Component({
   selector: 'app-products',
@@ -53,9 +54,40 @@ export class ProductsComponent implements OnInit {
   }
 
   onSubmit(index: number) {
-    console.log(this.productForms[index].value.name);
-    console.log(this.productForms[index].value.quantity);
-    console.log(this.productForms[index].value.price);
+    const name = this.http.post<{product: Product}>(
+      'http://localhost:5000/editProductName',
+      {
+        product_id: this.products_list[index].id,
+        name: this.productForms[index].value.name
+      },
+      {headers: {token: this.token}}
+    );
+    const quantity = this.http.post<{product: Product}>(
+      'http://localhost:5000/editProductQuantity',
+      {
+        product_id: this.products_list[index].id,
+        quantity: this.productForms[index].value.quantity
+      },
+      {headers: {token: this.token}}
+    );
+    const price = this.http.post<{product: Product}>(
+      'http://localhost:5000/editProductPrice',
+      {
+        product_id: this.products_list[index].id,
+        price: this.productForms[index].value.price
+      },
+      {headers: {token: this.token}}
+    );
+
+    combineLatest(
+      name,
+      quantity,
+      price
+    ).subscribe(([nameRes, quantityRes, priceRes]) => {
+      this.products_list[index].name = nameRes.product.name;
+      this.products_list[index].quantity = quantityRes.product.quantity;
+      this.products_list[index].price = priceRes.product.price;
+    });
   }
 
 }
