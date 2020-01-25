@@ -13,11 +13,15 @@ import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
 export class DashboardComponent {
   token: string;
   cards: any[];
+  home: string;
 
   constructor(private activatedRoute: ActivatedRoute,
               private http: HttpClient,
               private breakpointObserver: BreakpointObserver) {
     this.token = activatedRoute.snapshot.url[1].path;
+
+    this.home = '/' + this.token;
+
     this.cards = [
       {
         title: 'Manage Products',

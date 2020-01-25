@@ -17,3 +17,8 @@ button {
 mat-form-field{
   width: 100%;
 }
+
+mat-toolbar {
+  display: flex;
+  justify-content: center;
+}

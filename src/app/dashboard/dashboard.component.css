@@ -22,3 +22,8 @@ mat-card-header {
 img {
   width: 70%;
 }
+
+mat-toolbar {
+  display: flex;
+  justify-content: center;
+}

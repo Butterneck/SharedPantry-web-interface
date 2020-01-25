@@ -15,11 +15,14 @@ export class ProductsComponent implements OnInit {
   private token: string;
   private products_list: Product[];
   private productForms: FormGroup[] = [];
+  home: string;
 
   constructor(private activatedRoute: ActivatedRoute,
               private http: HttpClient,
               private snackBar: MatSnackBar) {
     this.token = activatedRoute.snapshot.url[1].path;
+
+    this.home = '../../' + this.token;
   }
 
 

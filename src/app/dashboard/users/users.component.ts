@@ -15,11 +15,14 @@ export class UsersComponent implements OnInit {
   private token: string;
   private users_list: any[];
   private userForms: FormGroup[] = [];
+  home: string;
 
   constructor(private activatedRoute: ActivatedRoute,
               private http: HttpClient,
               private snackBar: MatSnackBar) {
     this.token = activatedRoute.snapshot.url[1].path
+
+    this.home = '../../' + this.token;
   }
 
 
