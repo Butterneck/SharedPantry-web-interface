@@ -21,6 +21,8 @@ import { ProductsComponent } from './dashboard/products/products.component';
 import { UsersComponent } from './dashboard/users/users.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import { NewProductDialogComponent } from './dashboard/products/new-product-dialog/new-product-dialog.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
@@ -28,6 +30,10 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
     DashboardComponent,
     ProductsComponent,
     UsersComponent,
+    NewProductDialogComponent,
+  ],
+  entryComponents: [
+    NewProductDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +50,8 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
     MatToolbarModule,
     MatIconModule,
     ReactiveFormsModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

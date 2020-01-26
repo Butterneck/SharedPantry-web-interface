@@ -1,0 +1,21 @@
+<h1 mat-dialog-title>New Product</h1>
+<div mat-dialog-content>
+  <form [formGroup]="newProductForm">
+    <mat-form-field>
+      <input matInput placeholder="Product Name" formControlName="name">
+    </mat-form-field>
+    &nbsp;
+    <mat-form-field>
+      <input matInput placeholder="Quantity" formControlName="quantity">
+    </mat-form-field>
+    &nbsp;
+    <mat-form-field>
+      <input matInput placeholder="Price" formControlName="price">
+    </mat-form-field>
+    &nbsp;
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button>No Thanks</button>
+  <button mat-button (click)="onSubmit()" cdkFocusInitial>Ok</button>
+</div>

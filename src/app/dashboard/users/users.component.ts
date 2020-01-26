@@ -80,6 +80,7 @@ export class UsersComponent implements OnInit {
     ).subscribe(([nameRes, adminRes]) => {
       this.users_list[index].username = nameRes.user.username;
       this.users_list[index].is_admin = adminRes.user.is_admin;
+      this.openSnackBar('Saved!', 'Gotcha')
     })
   }
 }
