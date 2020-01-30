@@ -7,6 +7,7 @@ import {FormControl, FormGroup} from "@angular/forms";
 import {combineLatest} from "rxjs";
 import {MatDialog} from "@angular/material/dialog";
 import {NewProductDialogComponent} from "./new-product-dialog/new-product-dialog.component";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-products',
@@ -44,7 +45,7 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit() {
     this.http.post<{products: Product[]}>(
-      'http://localhost:5000/getAllProducts',
+      environment.backend_url + '/getAllProducts',
       {},
       {headers: {token: this.token}}
     ).subscribe(resp => {
@@ -61,7 +62,7 @@ export class ProductsComponent implements OnInit {
 
   onSubmit(index: number) {
     const name = this.http.post<{product: Product}>(
-      'http://localhost:5000/editProductName',
+      environment.backend_url + '/editProductName',
       {
         product_id: this.products_list[index].id,
         name: this.productForms[index].value.name
@@ -69,7 +70,7 @@ export class ProductsComponent implements OnInit {
       {headers: {token: this.token}}
     );
     const quantity = this.http.post<{product: Product}>(
-      'http://localhost:5000/editProductQuantity',
+      environment.backend_url + '/editProductQuantity',
       {
         product_id: this.products_list[index].id,
         quantity: this.productForms[index].value.quantity
@@ -77,7 +78,7 @@ export class ProductsComponent implements OnInit {
       {headers: {token: this.token}}
     );
     const price = this.http.post<{product: Product}>(
-      'http://localhost:5000/editProductPrice',
+      environment.backend_url + '/editProductPrice',
       {
         product_id: this.products_list[index].id,
         price: this.productForms[index].value.price

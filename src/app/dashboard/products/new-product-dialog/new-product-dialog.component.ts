@@ -1,9 +1,9 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {Product} from "../Product";
-import {combineLatest} from "rxjs";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {HttpClient} from "@angular/common/http";
+import {environment} from "../../../../environments/environment";
 
 class DialogComponent {
 }
@@ -36,7 +36,7 @@ export class NewProductDialogComponent implements OnInit {
 
   onSubmit() {
     let product = this.http.post<{product: Product}>(
-      'http://localhost:5000/addProduct',
+      environment.backend_url + 'addProduct',
       {
         name: this.newProductForm.value.name,
         price: this.newProductForm.value.price,

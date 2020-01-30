@@ -5,6 +5,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {FormControl, FormGroup} from "@angular/forms";
 import {User} from "./User";
 import {combineLatest} from "rxjs";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-users',
@@ -41,7 +42,7 @@ export class UsersComponent implements OnInit {
 
   ngOnInit() {
     this.http.post<{users: User[]}>(
-      'http://localhost:5000/getAllUsers',
+      environment.backend_url + '/getAllUsers',
       {},
       {headers: {token: this.token}}
     ).subscribe(users => {
@@ -58,7 +59,7 @@ export class UsersComponent implements OnInit {
 
   onSubmit(index: number) {
     const username = this.http.post<{user: User}>(
-      'http://localhost:5000/editUserName',
+      environment.backend_url + '/editUserName',
       {
         chat_id: this.users_list[index].chat_id,
         username: this.userForms[index].value.username
@@ -67,7 +68,7 @@ export class UsersComponent implements OnInit {
     );
 
     const isAdmin = this.http.post<{user: User}>(
-      'http://localhost:5000/editUserAdmin',
+      environment.backend_url + '/editUserAdmin',
       {
         chat_id: this.users_list[index].chat_id
       },
