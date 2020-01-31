@@ -16,8 +16,8 @@ import {environment} from "../../../environments/environment";
 })
 export class ProductsComponent implements OnInit {
   private readonly token: string;
-  private products_list: Product[];
-  private productForms: FormGroup[] = [];
+  public products_list: Product[];
+  public productForms: FormGroup[] = [];
   home: string;
 
   constructor(private activatedRoute: ActivatedRoute,

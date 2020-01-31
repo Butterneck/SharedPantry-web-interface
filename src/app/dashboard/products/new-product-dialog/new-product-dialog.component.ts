@@ -14,7 +14,7 @@ class DialogComponent {
   styleUrls: ['./new-product-dialog.component.css']
 })
 export class NewProductDialogComponent implements OnInit {
-  private newProductForm: FormGroup;
+  public newProductForm: FormGroup;
   private http: HttpClient;
   private token: string;
 

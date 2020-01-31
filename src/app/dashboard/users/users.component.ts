@@ -14,8 +14,8 @@ import {environment} from "../../../environments/environment";
 })
 export class UsersComponent implements OnInit {
   private token: string;
-  private users_list: any[];
-  private userForms: FormGroup[] = [];
+  public users_list: any[];
+  public userForms: FormGroup[] = [];
   home: string;
 
   constructor(private activatedRoute: ActivatedRoute,
