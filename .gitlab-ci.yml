@@ -8,7 +8,7 @@ deploy:
   script:
     - echo export const environment = { > src/environments/environment.prod.ts
     - echo production':' true, >> src/environments/environment.prod.ts
-    - echo backend_url':' "'https://"$HEROKU_BACKEND_APP_NAME".heorkuapp.com'" >> src/environments/environment.prod.ts
+    - echo backend_url':' "'https://"$HEROKU_BACKEND_APP_NAME".herokuapp.com'" >> src/environments/environment.prod.ts
     - echo }';' >> src/environments/environment.prod.ts
     - apk add ruby-dev ruby-rdoc git curl build-base
     - gem install dpl --pre
