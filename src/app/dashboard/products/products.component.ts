@@ -31,7 +31,7 @@ export class ProductsComponent implements OnInit {
 
 
   build_forms(product_list: Product[], forms: FormGroup[]) {
-    for (let product of product_list) {
+    for (const product of product_list) {
       forms.push(
         new FormGroup({
           name: new FormControl(product.name),
@@ -62,7 +62,7 @@ export class ProductsComponent implements OnInit {
 
   onSubmit(index: number) {
     const name = this.http.post<{product: Product}>(
-      environment.backend_url + '/editProductName',
+      environment.backend_url + '/api/editProductName',
       {
         product_id: this.products_list[index].id,
         name: this.productForms[index].value.name
@@ -70,7 +70,7 @@ export class ProductsComponent implements OnInit {
       {headers: {token: this.token}}
     );
     const quantity = this.http.post<{product: Product}>(
-      environment.backend_url + '/editProductQuantity',
+      environment.backend_url + '/api/editProductQuantity',
       {
         product_id: this.products_list[index].id,
         quantity: this.productForms[index].value.quantity
@@ -78,7 +78,7 @@ export class ProductsComponent implements OnInit {
       {headers: {token: this.token}}
     );
     const price = this.http.post<{product: Product}>(
-      environment.backend_url + '/editProductPrice',
+      environment.backend_url + '/api/editProductPrice',
       {
         product_id: this.products_list[index].id,
         price: this.productForms[index].value.price
@@ -94,7 +94,7 @@ export class ProductsComponent implements OnInit {
       this.products_list[index].name = nameRes.product.name;
       this.products_list[index].quantity = quantityRes.product.quantity;
       this.products_list[index].price = priceRes.product.price;
-      this.openSnackBar('Saved!', 'Gotcha')
+      this.openSnackBar('Saved!', 'Gotcha');
     });
   }
 
@@ -114,7 +114,7 @@ export class ProductsComponent implements OnInit {
             quantity: new FormControl(response.product.quantity),
             price: new FormControl(response.product.price)
           })
-        )
+        );
         this.openSnackBar('New product created!', 'Gotcha');
       });
     });

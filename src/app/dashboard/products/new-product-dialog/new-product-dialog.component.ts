@@ -36,7 +36,7 @@ export class NewProductDialogComponent implements OnInit {
 
   onSubmit() {
     const product = this.http.post<{product: Product}>(
-      environment.backend_url + '/addProduct',
+      environment.backend_url + '/api/addProduct',
       {
         name: this.newProductForm.value.name,
         price: this.newProductForm.value.price,

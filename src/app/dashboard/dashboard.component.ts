@@ -40,11 +40,4 @@ export class DashboardComponent {
       }
     ];
   }
-
-
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-    .pipe(
-      map(result => result.matches),
-      shareReplay()
-    );
 }

@@ -28,21 +28,21 @@ export class UsersComponent implements OnInit {
 
 
   build_forms(users_list: User[], forms: FormGroup[]) {
-    for (let user of users_list) {
+    for (const user of users_list) {
       forms.push(
         new FormGroup({
           username: new FormControl(user.username),
           chat_id: new FormControl(user.chat_id),
           is_admin: new FormControl(user.is_admin),
         })
-      )
+      );
     }
   }
 
 
   ngOnInit() {
     this.http.post<{users: User[]}>(
-      environment.backend_url + '/getAllUsers',
+      environment.backend_url + '/api/getAllUsers',
       {},
       {headers: {token: this.token}}
     ).subscribe(users => {
@@ -59,7 +59,7 @@ export class UsersComponent implements OnInit {
 
   onSubmit(index: number) {
     const username = this.http.post<{user: User}>(
-      environment.backend_url + '/editUserName',
+      environment.backend_url + '/api/editUserName',
       {
         chat_id: this.users_list[index].chat_id,
         username: this.userForms[index].value.username
@@ -68,7 +68,7 @@ export class UsersComponent implements OnInit {
     );
 
     const isAdmin = this.http.post<{user: User}>(
-      environment.backend_url + '/editUserAdmin',
+      environment.backend_url + '/api/editUserAdmin',
       {
         chat_id: this.users_list[index].chat_id
       },
@@ -81,7 +81,7 @@ export class UsersComponent implements OnInit {
     ).subscribe(([nameRes, adminRes]) => {
       this.users_list[index].username = nameRes.user.username;
       this.users_list[index].is_admin = adminRes.user.is_admin;
-      this.openSnackBar('Saved!', 'Gotcha')
-    })
+      this.openSnackBar('Saved!', 'Gotcha');
+    });
   }
 }
