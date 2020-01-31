@@ -4,6 +4,7 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: stretch;
+  padding-top: 7%;
 }
 
 .dashboard-card-content {
@@ -26,4 +27,6 @@ img {
 mat-toolbar {
   display: flex;
   justify-content: center;
+  position: fixed;
+  z-index: 1;
 }

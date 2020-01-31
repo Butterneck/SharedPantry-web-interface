@@ -3,6 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-top: 7%;
 }
 
 mat-accordion {
@@ -21,4 +22,6 @@ mat-form-field{
 mat-toolbar {
   display: flex;
   justify-content: center;
+  position: fixed;
+  z-index: 1;
 }
