@@ -45,7 +45,7 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit() {
     this.http.post<{products: Product[]}>(
-      environment.backend_url + '/getAllProducts',
+      environment.backend_url + '/api/getAllProducts',
       {},
       {headers: {token: this.token}}
     ).subscribe(resp => {
