@@ -19,7 +19,7 @@ export class NewProductDialogComponent implements OnInit {
   private token: string;
 
   constructor(private dialogRef: MatDialogRef<DialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+              @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.newProductForm = new FormGroup({
       name: new FormControl(''),
@@ -46,5 +46,9 @@ export class NewProductDialogComponent implements OnInit {
     );
 
     this.dialogRef.close(product);
+  }
+
+  onCancel() {
+    this.dialogRef.close();
   }
 }
