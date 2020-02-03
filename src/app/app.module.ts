@@ -23,6 +23,8 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import { NewProductDialogComponent } from './dashboard/products/new-product-dialog/new-product-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
+import { ChartsModule } from 'ng2-charts';
+import { StatisticsComponent } from './dashboard/statistics/statistics.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,7 @@ import {MatDialogModule} from "@angular/material/dialog";
     ProductsComponent,
     UsersComponent,
     NewProductDialogComponent,
+    StatisticsComponent,
   ],
   entryComponents: [
     NewProductDialogComponent
@@ -51,7 +54,8 @@ import {MatDialogModule} from "@angular/material/dialog";
     MatIconModule,
     ReactiveFormsModule,
     MatSlideToggleModule,
-    MatDialogModule
+    MatDialogModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

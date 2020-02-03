@@ -36,7 +36,7 @@ export class DashboardComponent {
       {
         title: 'Statistics',
         image: 'https://www.ft.com/__origami/service/image/v2/images/raw/ftcms%3A347ece48-0f69-11e9-a3aa-118c761d2745?source=ig',
-        path: '/charts/' + this.token
+        path: '/statistics/' + this.token
       }
     ];
   }
