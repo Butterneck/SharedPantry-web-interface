@@ -4,6 +4,7 @@ import { ChartType } from 'chart.js';
 import {environment} from "../../../environments/environment";
 import {ActivatedRoute} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
+import 'chartjs-plugin-doughnutlabel';
 
 @Component({
   selector: 'app-statistics',
@@ -25,6 +26,26 @@ export class StatisticsComponent implements OnInit {
         'rgb(247,156,212)'],
     },
   ];
+  public options = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      doughnutlabel: {
+        labels: [
+          {
+            text: '220',
+            font: {
+              size: '40',
+              units: 'em',
+              family: 'Arial, Helvetica, sans-serif',
+              style: 'italic',
+              weight: 'bold'
+            }
+          }
+        ]
+      }
+    }
+  };
   private readonly token: string;
   home: string;
 

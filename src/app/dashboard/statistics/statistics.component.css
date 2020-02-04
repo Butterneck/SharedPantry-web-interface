@@ -10,5 +10,9 @@ mat-toolbar {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 15%;
+  padding-top: 20%;
+}
+
+.doughnut {
+  height: 40vh;
 }

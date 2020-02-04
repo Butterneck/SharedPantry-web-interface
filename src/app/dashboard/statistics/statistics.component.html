@@ -3,16 +3,14 @@
 </mat-toolbar>
 
 <div class="container">
-  <div>
-    <div>
-      <div style="display: block">
-        <canvas baseChart
-                [data]="doughnutChartData"
-                [labels]="doughnutChartLabels"
-                [chartType]="doughnutChartType"
-                [colors]="chartColors">
-        </canvas>
-      </div>
-    </div>
+  <div class="doughnut">
+    <canvas baseChart
+            [data]="doughnutChartData"
+            [labels]="doughnutChartLabels"
+            [chartType]="doughnutChartType"
+            [colors]="chartColors"
+            [legend]="false"
+            [options]="options">
+    </canvas>
   </div>
 </div>
