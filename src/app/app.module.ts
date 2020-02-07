@@ -19,12 +19,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProductsComponent } from './dashboard/products/products.component';
 import { UsersComponent } from './dashboard/users/users.component';
-import {ReactiveFormsModule} from "@angular/forms";
-import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import {ReactiveFormsModule} from '@angular/forms';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { NewProductDialogComponent } from './dashboard/products/new-product-dialog/new-product-dialog.component';
-import {MatDialogModule} from "@angular/material/dialog";
+import {MatDialogModule} from '@angular/material/dialog';
 import { ChartsModule } from 'ng2-charts';
 import { StatisticsComponent } from './dashboard/statistics/statistics.component';
+import {ProductsResolver} from "./dashboard/products/products.resolver";
+import {UsersResolver} from "./dashboard/users/users.resolver";
 
 @NgModule({
   declarations: [
@@ -57,7 +59,10 @@ import { StatisticsComponent } from './dashboard/statistics/statistics.component
     MatDialogModule,
     ChartsModule
   ],
-  providers: [],
+  providers: [
+    ProductsResolver,
+    UsersResolver
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
