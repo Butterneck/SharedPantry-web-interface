@@ -53,7 +53,8 @@ export class UsersComponent implements OnInit {
     const isAdmin = this.http.post<{user: User}>(
       environment.backend_url + '/api/editUserAdmin',
       {
-        chat_id: this.usersList[index].chat_id
+        chat_id: this.usersList[index].chat_id,
+        is_admin: this.usersList[index].is_admin
       },
       {headers: {token: this.token}}
     );
